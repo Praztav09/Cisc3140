@@ -1,2 +1,2 @@
-# Cisc3140
-All assignments related to CISC3140: Paradigms in C++ course.
+# Cisc3142
+All assignments related to CISC3142: Paradigms in C++ course.
