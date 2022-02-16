@@ -1,0 +1,15 @@
+CC = g++
+CFLAGS = -Wall -g
+
+
+lab1: file_in.o
+	$(CC) $(CFLAGS) file_in.o -o lab1
+
+file_in.o: file_in.cpp
+	$(CC) $(CFLAGS) -c file_in.cpp
+
+clean:
+	rm -f file_in.o lab1
+
+run:
+	./lab1
