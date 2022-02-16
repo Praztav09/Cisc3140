@@ -1,4 +1,11 @@
 
+
+
+/*Prastav Atreya Sewani*/
+//lab01_C++
+//Read the input, calculate the averge per brand and per category and ouput to a file.
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
