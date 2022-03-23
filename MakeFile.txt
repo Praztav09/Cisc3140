@@ -1,8 +1,8 @@
 
 
 
-main.o: main.cpp
-	g++ -std=c++11 -c main.cpp
+calculator.o: calculator.cpp
+	g++ -std=c++11 -c calculator.cpp
 
 clean:
 	rm -f *.o *.exe
