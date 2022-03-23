@@ -1,6 +1,7 @@
 
 
-
+lab02: calculator.o
+   g++ -std=c++11 -o calculator.o lab02
 calculator.o: calculator.cpp
 	g++ -std=c++11 -c calculator.cpp
 
