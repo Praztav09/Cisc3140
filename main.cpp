@@ -10,80 +10,85 @@ Create a calculator program that:
 #include<cmath>
 using namespace std;
 
-
-enum class OPERATOR {
-    ADD,
-    SUB,
-    DIV,
-    MUL,
-    SQRT,
-    EXP
+enum class operation{
+    add,
+    sub,
+    divide,
+    mul,
+    squareroot,
+    exponent
 };
 
-struct Calculator {
- 
-    double first_number;
-    double second_number;
-    OPERATOR operator_type;
- 
-       void get_input() {
-        cout << "Enter first number: ";
-        cin >> first_number;
-        cout << "Enter second number: ";
-        cin >> second_number;
-        cout << "Enter operator: ";
-        string op;
-        cin>> op;
-        if (op == "+") {
-            operator_type = OPERATOR::ADD;
-        } else if (op == "-") {
-            operator_type = OPERATOR::SUB;
-        } else if (op == "/") {
-            operator_type = OPERATOR::DIV;
-        } else if (op == "*") {
-            operator_type = OPERATOR::MUL;
-        } else if (op == "sqrt") {
-            operator_type = OPERATOR::SQRT;
-        } else if (op == "^") {
-            operator_type = OPERATOR::EXP;
-        } else {
-            cout << "Invalid operator" << endl;
-            exit(1);
-        }
-    }
- 
-    double calculate() {
-        switch (operator_type) {
-            case OPERATOR::ADD:
-                return first_number + second_number;
-            case OPERATOR::SUB:
-                return first_number - second_number;
-            case OPERATOR::DIV:
-                if (second_number == 0) {
-                    cout << "Divide by zero error!" << endl;
-                    get_input();
-                }
-                return first_number / second_number;
-            case OPERATOR::MUL:
-                return first_number * second_number;
-            case OPERATOR::SQRT:
-                if (first_number < 0) {
-                    cout << "Invalid number!" << endl;
-                    get_input();
-                }
-                return sqrt(first_number);
-            case OPERATOR::EXP:
-                return pow(first_number, second_number);
-            
+struct calculator{
+    double num1;
+    double num2;
+    operation op;
+};
+
+int calculate(double num1,
+    double num2,
+    operation op){
+    switch(op){
+        case operation::add:
+            cout<<"The sum is: "<<num1+num2<<endl;
+            break;
+        case operation::sub:
+            cout<<"The difference is: "<<num1-num2<<endl;
+            break;
+        case operation::divide:
+            if(num2==0){
+                cout<<"Divide by zero error"<<endl;
             }
-            return 0;
-        }
-    
-    };
- 
-int main() {
-    Calculator calc;
-    calc.get_input();
-    cout << calc.calculate() << endl;
+            else{
+                cout<<"The quotient is: "<<num1/num2<<endl;
+            }
+            break;
+        case operation::mul:
+            cout<<"The product is: "<<num1*num2<<endl;
+            break;
+        case operation::squareroot:
+            if(num1<0){
+                cout<<"Invalid input"<<endl;
+            }
+            else{
+                cout<<"The square root is: "<<sqrt(num1)<<endl;
+            }
+            break;
+        case operation::exponent:
+            cout<<"The exponent is: "<<pow(num1,num2)<<endl;
+            break;
+    }
+		return 0;
+}
+
+int main(){
+    calculator c; 
+	string opt;
+	cout << "Enter first number: ";
+    cin >> c.num1;
+	cout << "Enter operator: ";
+	cin >> opt;
+    cout << "Enter second number: ";
+    cin >> c.num2;
+	operation op{};
+
+    if (opt == "add") {
+        op = operation::add;
+    } else if (opt == "sub") {
+        op = operation::sub;
+    } else if (opt == "mul") {
+        op = operation::mul;
+    } else if (opt == "div") {
+        op = operation::divide;
+    }else if (opt == "squareroot") {
+        op = operation::squareroot;
+    }else if (opt == "exponent") {
+        op = operation::exponent;
+    }
+
+
+        
+    //cin>>c.num1>>c.op>>c.num2;
+    calculate(c.num1, c.num2, c.op);
     return 0;
 }
