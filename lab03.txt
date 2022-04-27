@@ -1,0 +1,16 @@
+EXE = lab03
+CXX = g++
+CXXFLAGS =  -IheaderFiles/ -Wall -g -std=c++11
+OBJS = readwrite.o main.o
+HDRS = readwrite.h
+SRCS = readwrite.cpp main.cpp
+$(EXE): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS)
+clean:
+	rm -f $(OBJS) $(EXE)
+run: $(EXE)
+	./$(EXE)
+main.o: src/main.cpp
+	$(CXX) $(CXXFLAGS) -c src/main.cpp
+readwrite.o: src/readwrite.cpp headerFiles/readwrite.h
+	$(CXX) $(CXXFLAGS) -c src/readwrite.cpp
